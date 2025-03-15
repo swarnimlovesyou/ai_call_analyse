@@ -1,9 +1,11 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
+import os
+from backend.app.api.endpoints import router
+from backend.app.config import API_HOST, API_PORT, DEBUG
 
-from app.api.endpoints import router
-from app.config import API_HOST, API_PORT, DEBUG
+PORT = int(os.getenv("PORT", 1000))
 
 # Create FastAPI app
 app = FastAPI(
